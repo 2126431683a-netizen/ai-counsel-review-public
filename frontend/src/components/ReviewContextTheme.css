@@ -1,0 +1,62 @@
+/* One bright roundtable scene makes the waiting state legible and alive. */
+.review-shell .review-brainstorm{padding:16px 18px 12px;border:2px solid #252733;border-radius:10px;background:#fffdf5;box-shadow:2px 3px 0 #252733;margin-bottom:19px;position:relative;overflow:hidden}
+.review-brainstorm__intro{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;color:#252733}
+.review-brainstorm__intro strong{font-size:16px;font-weight:850;line-height:1.6}
+.review-brainstorm__intro>span{font-size:10px;color:#505362}
+.review-brainstorm__actors{display:grid;grid-template-columns:repeat(var(--brain-count),minmax(0,1fr));gap:12px;max-width:600px;margin:25px auto 0;position:relative;z-index:2}
+.review-brainstorm__actor{display:flex;flex-direction:column;align-items:center;position:relative;min-width:0;animation:review-seat-talk 3200ms ease-in-out infinite;animation-delay:calc(var(--seat) * -570ms)}
+.review-shell .review-brainstorm .review-emblem{width:61px;height:58px;padding:0;margin-top:5px;box-shadow:2px 3px 0 #252733;transform:none}
+.review-shell .review-brainstorm .review-portrait{width:110%;height:125%;margin:-18% -5% 0}
+.review-brainstorm__bubble{position:relative;display:flex;align-items:center;justify-content:center;min-width:35px;height:25px;padding:0 7px;border:2px solid #252733;border-radius:9px 10px 9px 2px;background:#fff3c7;color:#252733;box-shadow:1px 1px 0 #252733;font-size:10px;font-weight:750;margin:0 0 5px 30px;animation:review-thought 2800ms ease-in-out infinite;animation-delay:calc(var(--seat) * -480ms);white-space:nowrap;flex-shrink:0}
+.review-brainstorm__name{max-width:100%;text-align:center;font-size:10px;font-weight:750;line-height:1.6;margin-top:10px;color:#252733;overflow-wrap:anywhere}
+.review-brainstorm__actor.has-returned .review-brainstorm__bubble{background:#d9efdf;animation:none;color:#316951}
+.review-brainstorm__actor.has-returned,.review-brainstorm__actor.has-failed{animation:none}
+.review-brainstorm__actor.has-failed .review-brainstorm__bubble{animation:none;background:#f8ddd3;color:#93443b}
+.review-brainstorm__desk{position:relative;width:min(600px,100%);height:72px;margin:-9px auto 0;z-index:1}
+.review-brainstorm__desk>svg{display:block;width:100%;height:100%;overflow:visible}
+.review-brainstorm__scribble{stroke-dasharray:65;animation:review-scribble 2300ms ease-in-out infinite}
+.review-brainstorm__footnote{font-size:10px;line-height:1.7;color:#505362;margin:2px 0 0;text-align:center}
+.review-brainstorm__chair{position:absolute;left:50%;top:7px;transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:5px 12px;background:#fffdf5;border:2px solid #252733;border-radius:8px;box-shadow:2px 2px 0 #252733;white-space:nowrap}
+.review-shell .review-brainstorm__chair .review-emblem{width:44px;height:41px;margin:0;box-shadow:none;border:none;background:transparent}
+.review-brainstorm__chair>span:last-child{font-size:11px;font-weight:800}
+.review-brainstorm.is-chair .review-brainstorm__actors{opacity:.7}
+.review-brainstorm.is-chair .review-brainstorm__actor{animation:none}
+.review-brainstorm.is-chair .review-brainstorm__desk{height:80px}
+.review-brainstorm.is-preparing .review-brainstorm__scribble{animation:none}
+
+/* The underlying weights stay exact. Cells replace printed percentages. */
+.review-weight-cells{display:inline-grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:2px;width:88px;flex-shrink:0;vertical-align:middle;--weight-color:#275a91}
+.review-weight-cells>i{height:6px;border:1px solid #9299a5;border-radius:1px;background:linear-gradient(to right,var(--weight-color) 0 var(--cell-fill),#e0e5ec var(--cell-fill) 100%);display:block}
+.review-weight-unset{font-size:10px;color:#505362}
+.review-shell .review-team__top{min-height:98px;flex-direction:column;align-items:flex-start;gap:13px}
+.review-shell .review-team__top .review-team__weight{display:flex;gap:7px;align-items:center;font-size:10px;color:#505362;white-space:normal;line-height:1.5;padding:0}
+.review-shell .review-team__weight .review-weight-cells{width:100px}
+.review-shell .review-team__weight .review-weight-cells>i{height:8px}
+.review-shell .review-team .review-emblem{width:65px;height:61px}
+.review-weight-legend{margin:16px 0 0;color:#505362;font-size:10px;line-height:1.7}
+.review-shell .review-comment .review-emblem{width:49px;height:52px;padding:0;border-radius:15px;background:var(--emblem-tint);margin-top:5px;box-shadow:1px 2px 0 #252733;transform:none}
+.review-shell .review-comment .review-portrait,.review-shell .review-evidence__identity .review-portrait{width:104%;height:117%;margin:-15% -2% 0;filter:none}
+.review-shell .review-evidence__identity .review-emblem{width:58px;height:62px;border-radius:15px;transform:none}
+.review-evidence__context{border-left:3px solid #275a91;padding-left:12px;margin-top:17px}
+.review-dimension small .review-weight-cells{margin-top:5px;width:90px}
+.review-score-summary{border-top:2px solid #252733;margin-top:22px;padding-top:15px;color:#252733}
+.review-score-summary>h4{font-size:16px;margin:0 0 8px}
+.review-score-summary>p{font-size:11px;color:#505362;line-height:1.8}
+.review-score-summary table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.review-score-summary th,.review-score-summary td{padding:11px 8px;border-bottom:1px solid #bfc5ce}
+.review-score-summary thead th{background:#e0e5ec;font-size:11px}
+.review-score-summary tbody th{font-weight:650}
+.review-score-summary td:last-child{font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.review-score-summary small{font-size:10px;color:#505362;font-weight:500}
+.review-score-summary__total{display:flex;align-items:center;gap:15px;margin-top:15px;padding:12px 15px;background:#fff3c7;border:2px solid #252733;border-radius:7px;font-size:13px;font-weight:750}
+.review-score-summary__total>strong{font-size:25px}
+.review-score-summary__total>span{font-size:11px;font-weight:500}
+@keyframes review-seat-talk{0%,65%,100%{transform:translateY(0) rotate(0)}18%,38%{transform:translateY(-3px) rotate(-2deg)}}
+@keyframes review-thought{0%,100%{transform:scale(.96) rotate(-3deg)}35%,65%{transform:scale(1.06) rotate(2deg)}}
+@keyframes review-scribble{0%,100%{stroke-dashoffset:0}50%{stroke-dashoffset:13}}
+@media(max-width:1100px){.review-weight-cells{width:76px}.review-shell .review-team__top .review-team__weight{gap:5px}}
+@media(max-width:1100px){.review-shell .review-team__weight .review-weight-cells{width:84px}}
+@media(max-width:768px){.review-shell .review-brainstorm{padding:14px 10px 10px}.review-brainstorm__intro strong{font-size:13px}.review-brainstorm__intro>span{font-size:9px}.review-brainstorm__actors{gap:5px;margin-top:20px}.review-shell .review-brainstorm .review-emblem{width:44px;height:45px}.review-brainstorm__bubble{font-size:9px;height:23px;min-width:29px;padding:0 4px;margin-left:12px}.review-brainstorm__name{font-size:9px;margin-top:8px}.review-brainstorm__desk{height:54px;margin-top:-2px}.review-brainstorm__footnote{font-size:9px}.review-brainstorm.has-many .review-brainstorm__actors{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:18px}.review-brainstorm__chair{gap:6px;padding:3px 8px}.review-shell .review-brainstorm__chair .review-emblem{width:36px;height:36px}.review-score-summary th,.review-score-summary td{padding:10px 4px;font-size:11px}}
+@media(max-width:520px){.review-shell .review-comment .review-emblem{width:43px;height:47px;padding:0}.review-shell .review-evidence__identity .review-emblem{width:52px;height:57px}.review-score-summary .review-weight-cells{width:64px;gap:1.5px}.review-score-summary td:last-child{font-size:15px}.review-score-summary table{table-layout:auto}.review-score-summary__total{flex-wrap:wrap}.review-brainstorm__intro>span{display:none}}
+@media(max-width:380px){.review-brainstorm__actors{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:20px}.review-brainstorm__actors[data-count="1"]{grid-template-columns:1fr}.review-brainstorm__actors[data-count="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}.review-brainstorm__actors[data-count="5"]{grid-template-columns:repeat(6,minmax(0,1fr))}.review-brainstorm__actors[data-count="5"]>.review-brainstorm__actor{grid-column:span 2}.review-brainstorm__actors[data-count="5"]>.review-brainstorm__actor:nth-child(4){grid-column:2/span 2}.review-brainstorm__actors[data-count="5"]>.review-brainstorm__actor:nth-child(5){grid-column:4/span 2}.review-brainstorm.has-many .review-brainstorm__actors{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.review-shell .review-brainstorm *{animation:none!important;transition:none!important}}

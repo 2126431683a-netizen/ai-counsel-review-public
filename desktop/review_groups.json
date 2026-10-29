@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "purpose": "用户选择：偏实用与讲清楚；权重为编辑偏好，不是观众占比",
+  "groups": [
+    {
+      "id": "source-tech",
+      "name": "技术团",
+      "weight": 25,
+      "dimensions": [
+        {
+          "id": "accuracy",
+          "name": "技术表述准确",
+          "weight": 45
+        },
+        {
+          "id": "evidence",
+          "name": "实测证据与结论相称",
+          "weight": 35
+        },
+        {
+          "id": "scope",
+          "name": "适用条件与边界",
+          "weight": 20
+        }
+      ],
+      "viewpoints": [
+        "想核对结果的人",
+        "对参数和版本敏感的人",
+        "关心失败后还能否继续用的人",
+        "认可简单有效方案的人"
+      ]
+    },
+    {
+      "id": "source-practical",
+      "name": "实用团",
+      "weight": 30,
+      "dimensions": [
+        {
+          "id": "value",
+          "name": "任务价值",
+          "weight": 40
+        },
+        {
+          "id": "effort",
+          "name": "总投入是否值得",
+          "weight": 35
+        },
+        {
+          "id": "fit",
+          "name": "适用场景讲清楚",
+          "weight": 25
+        }
+      ],
+      "viewpoints": [
+        "手头有任务、时间有限的人",
+        "已有一套工具想比较的人",
+        "愿意付费换省事的人",
+        "先看门槛再决定的人"
+      ]
+    },
+    {
+      "id": "source-surfer",
+      "name": "表达趣味团",
+      "weight": 15,
+      "dimensions": [
+        {
+          "id": "promise",
+          "name": "观看期待得到回应",
+          "weight": 40
+        },
+        {
+          "id": "flow",
+          "name": "信息推进与节奏",
+          "weight": 35
+        },
+        {
+          "id": "voice",
+          "name": "表达自然与辨识度",
+          "weight": 25
+        }
+      ],
+      "viewpoints": [
+        "被一个效果吸引进来的人",
+        "愿意听故事和认真解释的人",
+        "喜欢自然反差的人",
+        "不吃硬梗和夸张话术的人"
+      ]
+    },
+    {
+      "id": "source-thinker",
+      "name": "思考团",
+      "weight": 10,
+      "dimensions": [
+        {
+          "id": "reasoning",
+          "name": "论据与结论相称",
+          "weight": 40
+        },
+        {
+          "id": "people",
+          "name": "具体的人与实际意义",
+          "weight": 35
+        },
+        {
+          "id": "limits",
+          "name": "局限与取舍",
+          "weight": 25
+        }
+      ],
+      "viewpoints": [
+        "想知道对自己有什么影响的人",
+        "关心创作和工作处境的人",
+        "愿意认可新工具价值的人",
+        "对过度推广结论有疑问的人"
+      ]
+    },
+    {
+      "id": "source-beginner",
+      "name": "新手团",
+      "weight": 20,
+      "dimensions": [
+        {
+          "id": "clarity",
+          "name": "概念与目标讲明白",
+          "weight": 40
+        },
+        {
+          "id": "path",
+          "name": "本期承诺的行动路径",
+          "weight": 35
+        },
+        {
+          "id": "starting",
+          "name": "前置条件与卡点提示",
+          "weight": 25
+        }
+      ],
+      "viewpoints": [
+        "第一次接触本期主题的人",
+        "会用工具但不懂本期术语的人",
+        "只想完成一个具体任务的人",
+        "愿意补一点原理的人"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+// Isolated synthetic UI preview. No production requests or history writes.
+const fs=require('node:fs'),path=require('node:path');
+const {createRequire}=require('node:module');
+const root=path.resolve(__dirname,'..'),req=createRequire(path.join(root,'frontend/package.json'));
+const out=path.join(root,'build/bubble-trail-preview');fs.mkdirSync(out,{recursive:true});
+const bundle=JSON.parse(fs.readFileSync(path.join(root,'desktop/role_bundle.json'),'utf8'));
+const sample=JSON.parse(fs.readFileSync(path.join(root,'build/stream-connection-real/result.json'),'utf8'));
+fs.writeFileSync(path.join(out,'people.json'),JSON.stringify(Object.entries(bundle.personas).filter(([id])=>id!=='source-editor').map(([id,p])=>({id,...p}))));
+fs.writeFileSync(path.join(out,'sample.json'),JSON.stringify(sample));
+fs.writeFileSync(path.join(out,'fixture.jsx'),`import React,{useState} from 'react';
+import {createRoot} from 'react-dom/client';
+import ReviewBrainstorm from '../../frontend/src/components/ReviewBrainstorm.jsx';
+import {roundComments} from '../../frontend/src/utils/reviewPresentation.js';
+import people from './people.json';import sample from './sample.json';
+import '../../frontend/src/App.css';import '../../frontend/src/components/ChatInterface.css';
+import '../../frontend/src/components/ReviewSoftTheme.css';import '../../frontend/src/components/ReviewComicTheme.css';import '../../frontend/src/components/ReviewCharacterTheme.css';import '../../frontend/src/components/ReviewContextTheme.css';import '../../frontend/src/components/ReviewEditorialTheme.css';import '../../frontend/src/components/ReviewLayoutTheme.css';import '../../frontend/src/components/ReviewDiscussionTheme.css';
+const comments=roundComments(people,sample.rounds[0],0,sample.sample_question);
+function Demo(){const [mode,setMode]=useState('审阅中'),[detail,setDetail]=useState(null);const activePeople=mode==='八团布局'?[...people,...[1,2,3].map(n=>({id:'extra'+n,name:'自定义'+n}))]:people;return <div className="app review-shell"><main className="chat-interface review-mode" style={{height:'100vh',overflow:'auto',padding:24,boxSizing:'border-box',minWidth:0,display:'block'}}> <header style={{marginBottom:22}}><h1 style={{fontSize:23}}>圆桌讨论 · 多气泡预览</h1><p style={{fontSize:12}}>独立虚构示例，不发起审稿。黄色为状态示意，绿色取自虚构稿实际返回。</p><nav style={{display:'flex',gap:8,flexWrap:'wrap'}}>{['审阅中','部分返回','全部返回','八团布局','准备中','返回失败'].map(m=><button onClick={()=>{setMode(m);setDetail(null);}} key={m} style={{padding:'6px 10px'}}>{m}</button>)}</nav></header><ReviewBrainstorm key={mode} personas={activePeople} preparing={mode==='准备中'} returned={mode==='全部返回'?people.map(p=>p.id):mode==='部分返回'?people.slice(0,2).map(p=>p.id):[]} failed={mode==='返回失败'?[people[0].id]:[]} comments={comments} commentTarget="preview-detail" onCommentSelect={key=>setDetail(comments.find(c=>c.key===key))}/><section id="preview-detail" style={{padding:16}}><h2 style={{fontSize:17}}>点击已返回评论，查看依据</h2>{detail?<><p>{detail.text}</p><blockquote>{detail.detail.basis}</blockquote><p>{detail.detail.rationale}</p></>:<p>这里展示虚构稿的真实评论依据。</p>}</section></main></div>};createRoot(document.getElementById('root')).render(<Demo/>);`);
+req('esbuild').build({entryPoints:[path.join(out,'fixture.jsx')],bundle:true,outfile:path.join(out,'fixture.js'),jsx:'automatic',minify:true,nodePaths:[path.join(root,'frontend/node_modules')],define:{'process.env.NODE_ENV':'"production"','import.meta.env':'{}'}}).then(()=>{fs.writeFileSync(path.join(out,'index.html'),'<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>圆桌多气泡检查</title><style>body{margin:0}#root,.app{min-width:0;max-width:100%}</style><link rel="stylesheet" href="fixture.css"></head><body><div id="root"></div><script src="fixture.js"></script></body></html>');console.log(out);}).catch(e=>{console.error(e);process.exitCode=1;});

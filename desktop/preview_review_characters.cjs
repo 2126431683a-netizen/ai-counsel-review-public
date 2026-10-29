@@ -1,0 +1,36 @@
+// Isolated manual stream controls for UI verification; no application API calls.
+const fs=require('node:fs'),path=require('node:path');
+const {createRequire}=require('node:module');
+const root=path.resolve(__dirname,'..'),req=createRequire(path.join(root,'frontend/package.json'));
+const out=path.join(root,'build/portrait-preview');fs.mkdirSync(out,{recursive:true});
+const jsx=`import React,{useState} from 'react';
+import {createRoot} from 'react-dom/client';
+import {I18nContext,translate} from '../../frontend/src/i18n.js';
+import Sidebar from '../../frontend/src/components/Sidebar.jsx';
+import ReviewBoard from '../../frontend/src/components/ReviewBoard.jsx';
+import ReviewEmblem from '../../frontend/src/components/ReviewEmblem.jsx';
+import {REVIEW_IDENTITIES} from '../../frontend/src/utils/reviewIdentity.js';
+import '../../frontend/src/App.css';
+import '../../frontend/src/components/AdvisorSetup.css';
+import '../../frontend/src/components/ReviewSoftTheme.css';
+import '../../frontend/src/components/ReviewComicTheme.css';
+import '../../frontend/src/components/ReviewCharacterTheme.css';
+import '../../frontend/src/components/ReviewContextTheme.css';
+import '../../frontend/src/components/ReviewEditorialTheme.css';
+import '../../frontend/src/components/ReviewLayoutTheme.css';
+import '../../frontend/src/components/ReviewDiscussionTheme.css';
+const ids=['source-tech','source-practical','source-surfer','source-thinker','source-beginner'];
+const weights=[25,30,15,10,20];
+const people=REVIEW_IDENTITIES.slice(0,5).map((p,i)=>({id:ids[i],name:p.label,avatar_emoji:'review:'+p.id,system_prompt:'<review-group-config>'+JSON.stringify({id:ids[i],name:p.label,weight:weights[i],dimensions:[{id:'demo',name:'示例维度',weight:100}]})+'</review-group-config>'}));
+const question='【虚构示例】做完还能改吗？我们用模型A写动画代码，Remotion负责渲染。先确认分镜，再创建工程。后面演示修改一处字幕、预览并导出。已有文稿可直接复用，不必从零写。';
+const comments=['模型写代码、Remotion渲染，前后的分工我看明白了。','现成稿子也能接着用，这比从零重做省事。','开头问能不能改，后面改一处字幕来回应，挺顺。','先确认分镜再生成工程，决定权还在自己这里。','先分镜再做工程，这个先后顺序我懂了。'];
+const extras=[['先确认分镜这个顺序挺重要，不然代码写完才发现内容错了。','对，先把内容看明白，再折腾怎么动起来。'],['能只改一处字幕就行，最怕小改动也要重来。','但只有两句想法的话，可能先把内容写明白更省事。'],['“做完还能改吗”后面真接着改了一处，不是问完就跑了。','这个例子可以，不用为了好玩再塞一堆梗。'],['工具做的是制作，人还是要确认内容，这个分工更有意思。','所以我更愿意把它当可检查的流程，而不是一键答案。'],['原来先看分镜就能改，不是得等整条片子生成完。','刚开始照这条短路线来就好，先别把流程弄太复杂。']];
+const responses=people.map((p,i)=>{const texts=[comments[i],...extras[i]];return {persona_id:p.id,content:texts.join('\\n\\n')+'\\n\\n### 给作者的备忘\\n此为虚构示例。\\n<review-score>'+JSON.stringify({scores:{demo:8+i*.1},unrated_reasons:{}})+'</review-score>\\n<review-comments>'+JSON.stringify({comments:texts.map((text,j)=>({id:'c'+(j+1),reply_to:j===2?'c2':null,text,basis:'先确认分镜，再创建工程。',context:'后面演示修改一处字幕、预览并导出。',rationale:'完整稿件先给出确认顺序，后面安排同一工程的修改演示；据此讨论具体的控制点，不把待拍画面当缺失。',limits:'虚构界面示例，只评价稿面安排。',kind:'观众反应'})),dimension_notes:{demo:{basis:'先确认分镜，再创建工程。',context:'后面演示修改一处字幕、预览并导出。',rationale:'分阶段确认与可修改演示共同说明流程的可检查性。',deduction:'当前评价稿面安排，不推定已完成成片或外部测试。'}}})+'</review-comments>'};});
+const histories=[{id:'demo1',title:'示例稿：AI整理读书笔记',created_at:'2026-10-16T01:00:00',run_summary:'5 advisors · 1/1 rnd'},{id:'demo2',title:'示例稿：如何讲清楚一个概念',created_at:'2026-10-15T02:00:00'}];
+function Demo(){const [n,setN]=useState(0),[running,setRunning]=useState(false),[phase,setPhase]=useState('idle'),[open,setOpen]=useState(false),[view,setView]=useState('gallery');const verdict=phase==='complete'?{content:'这篇稿的主线成立，可以按现有方案进入制作。\\n\\n模型分工、分镜确认和后续修改已有前后照应；交付时核对演示落地即可，无需重复补一套安装教程。\\n\\n## 值得保留\\n\\n先确认分镜，再创建工程。已有文稿可直接复用，开头的修改问题由后面的同一案例承接。\\n\\n## 交付核对\\n\\n按已有计划确认修改前后对照与最终导出，这属于制作验收，不是正文缺失。'}:null;return <I18nContext.Provider value={{language:'zh-CN',t:(s,v)=>translate(s,'zh-CN',v)}}><div className="app review-shell"><Sidebar conversations={histories} currentConversationId="demo1" onSelectConversation={()=>{}} onNewAdvisors={()=>setView('gallery')} onDeleteConversation={()=>{}} onOpenSettings={()=>{}} isLoading={running} onAbort={()=>{setRunning(false);setPhase('error')}} isOpen={open} onClose={()=>setOpen(false)}/><main className="fixture-main review-mode"><button className="mobile-menu-btn" onClick={()=>setOpen(true)} aria-label="打开菜单"><span className="hamburger-icon"/></button><header className="fixture-controls"><strong>人物与动效 · 独立演示</strong><span>虚构数据，不连接模型</span><div><button onClick={()=>setView(view==='gallery'?'board':'gallery')}>切换人物 / 工作台</button><button onClick={()=>{setN(0);setPhase('initializing');setRunning(true);setView('board')}}>准备阶段</button><button onClick={()=>{setN(0);setPhase('round');setRunning(true);setView('board')}}>开始演示</button><button onClick={()=>setN(Math.min(n+1,5))}>返回下一团</button><button onClick={()=>{setN(5);setPhase('verdict')}}>主编汇总</button><button onClick={()=>{setRunning(false);setPhase('complete')}}>完成演示</button><button onClick={()=>{setRunning(false);setPhase('error')}}>模拟中断</button></div></header>{view==='gallery'?<section className="advisor-setup fixture-gallery"><h1>各有关注，也各有表情。</h1><p>五个模拟评审团，一位汇总主编。</p><div className="advisor-setup__persona-gallery">{REVIEW_IDENTITIES.slice(0,6).map(p=><div className="advisor-setup__persona-card advisor-setup__persona-card--selected" key={p.id}><ReviewEmblem persona={{name:p.label,avatar_emoji:'review:'+p.id}}/><strong className="advisor-setup__persona-name">{p.label}</strong><span className="advisor-setup__persona-role">{p.focus}</span><span className="advisor-setup__persona-desc">{p.summary}</span></div>)}</div></section>:<ReviewBoard personas={people} rounds={[{round_number:1,responses:responses.slice(0,n)}]} currentRound={phase==='initializing'?0:1} maxRounds={1} isRunning={running} phase={phase} error={phase==='error'?'演示中断，已返回的意见保留。':undefined} verdict={verdict} question={question}/>}</main></div></I18nContext.Provider>}
+createRoot(document.getElementById('root')).render(<Demo/>);`;
+fs.writeFileSync(path.join(out,'fixture.jsx'),jsx);
+req('esbuild').build({entryPoints:[path.join(out,'fixture.jsx')],bundle:true,outfile:path.join(out,'fixture.js'),jsx:'automatic',minify:true,nodePaths:[path.join(root,'frontend/node_modules')],define:{'process.env.NODE_ENV':'"production"'}}).then(()=>{
+fs.writeFileSync(path.join(out,'index.html'),'<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>人物评审团 · 独立界面检查</title><link rel="stylesheet" href="fixture.css"><style>:root{--font-scale:1}body{margin:0;color:#252733;font:14px/1.7 "Microsoft YaHei UI",sans-serif}*{box-sizing:border-box}button{font:inherit}.fixture-main{min-width:0;flex:1;height:100%;overflow:auto;padding:24px 30px;background:#e0e5ec}.fixture-controls{margin-bottom:35px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}.fixture-controls>div{display:flex;gap:9px;flex-wrap:wrap}.fixture-controls button{border:2px solid #252733;background:#fffdf5;border-radius:6px;padding:6px 9px;cursor:pointer}.fixture-controls>span{font-size:11px}.fixture-gallery{max-width:1100px;margin:auto!important}.fixture-gallery h1{font-size:26px}.fixture-gallery>p{margin-bottom:36px}@media(max-width:768px){.fixture-main{padding:70px 15px 20px}.mobile-menu-btn{display:flex}.fixture-controls{margin-bottom:24px}}</style></head><body><div id="root"></div><script src="fixture.js"></script></body></html>');
+console.log(out);
+}).catch(e=>{console.error(e);process.exitCode=1});

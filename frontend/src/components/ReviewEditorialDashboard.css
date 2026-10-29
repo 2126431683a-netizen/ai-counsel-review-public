@@ -1,0 +1,43 @@
+/* The editor's words stay intact; hierarchy and a common score axis do the work. */
+.review-shell .editorial-dashboard { --editorial-line:var(--ip-line,#d9d6c9);--editorial-paper:var(--ip-white,#fffef9);--editorial-ink:var(--ip-ink,#10110f);--editorial-muted:var(--ip-muted,#595a50); }
+.review-shell .editorial-dashboard .review-editor-top__heading { margin-bottom:19px;gap:13px; }
+.review-shell .editorial-dashboard .review-editor-top__heading h3 { font-size:17px;letter-spacing:0; }
+.review-shell .editorial-dashboard .review-editor-top__heading .review-emblem { width:48px;height:52px;transform:none;margin:0;box-shadow:none; }
+.review-shell .editorial-dashboard .review-editor-top__copy { padding:8px 12px;font-size:12px;font-weight:500; }
+.editorial-dashboard__overview { display:grid;gap:24px;padding:21px 0 23px;border-top:1px solid var(--editorial-line); }
+.editorial-dashboard__overview.has-chart { grid-template-columns:minmax(0,1.1fr) minmax(260px,1fr); }
+.editorial-dashboard__judgment { min-width:0;align-self:center; }
+.review-shell .editorial-dashboard .editorial-dashboard__judgment>h4 { font-size:clamp(18px,1.5vw,23px);font-weight:700;line-height:1.55;letter-spacing:0;color:var(--editorial-ink);margin:0 0 12px;max-width:38ch; }
+.editorial-dashboard__judgment>p { color:var(--editorial-muted);font-size:14px;line-height:1.85;max-width:55ch;margin:0 0 18px;text-wrap:pretty; }
+.editorial-dashboard__judgment>a { color:var(--ip-blue,#185bac);font-size:12px;text-underline-offset:4px; }
+.editorial-chart { min-width:0;margin:0;border-left:1px solid var(--editorial-line);padding-left:24px; }
+.editorial-chart>figcaption { display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:14px; }
+.editorial-chart>figcaption>span { font-size:12px;color:var(--editorial-muted); }
+.editorial-chart>figcaption>strong { font-size:32px;font-weight:700;color:var(--editorial-ink);font-variant-numeric:tabular-nums;line-height:1; }
+.editorial-chart>figcaption small { font-size:12px;font-weight:400;color:var(--editorial-muted); }
+.editorial-chart__scale { display:flex;justify-content:space-between;margin:0 calc(2.6em + 10px) 7px calc(6em + 10px);font-size:11px;color:var(--editorial-muted); }
+.editorial-chart__rows { display:grid;gap:11px; }
+.editorial-chart__row { display:grid;grid-template-columns:6em minmax(0,1fr) 2.6em;gap:10px;align-items:center;font-size:12px; }
+.editorial-chart__row>span { color:var(--editorial-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+.editorial-chart__row>strong { font-size:12px;font-weight:600;text-align:right;font-variant-numeric:tabular-nums;color:var(--editorial-ink); }
+.editorial-chart__track { height:9px;position:relative;background:linear-gradient(to right,transparent calc(50% - .5px),#b8b8ae calc(50% - .5px),#b8b8ae calc(50% + .5px),transparent calc(50% + .5px)),#e8e6dc;border-radius:2px;overflow:hidden; }
+.editorial-chart__track>i { display:block;height:100%;border-radius:2px; }
+.editorial-chart>p { font-size:10px;line-height:1.6;color:var(--editorial-muted);margin:14px 0 0; }
+.editorial-dashboard__points { border-top:1px solid var(--editorial-line);padding-top:18px; }
+.editorial-dashboard__points>header { display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:9px;flex-wrap:wrap; }
+.review-shell .editorial-dashboard .editorial-dashboard__points h4 { font-size:14px;font-weight:600;margin:0;color:var(--editorial-ink); }
+.editorial-dashboard__points h4>span { font-size:11px;font-weight:500;margin-left:5px;color:var(--editorial-muted); }
+.editorial-dashboard__points>header>span { font-size:10px;color:var(--editorial-muted); }
+.editorial-dashboard__points details { border-bottom:1px solid var(--editorial-line); }
+.editorial-dashboard__points details>summary { cursor:pointer;font-size:14px;line-height:1.75;padding:12px 3px;color:var(--editorial-ink);font-weight:500; }
+.editorial-dashboard__points details>summary::marker { font-size:10px;color:var(--editorial-muted); }
+.editorial-dashboard__points details[open]>summary { color:var(--ip-blue,#185bac); }
+.editorial-dashboard__points details>p { font-size:13px;line-height:1.85;color:var(--editorial-muted);margin:0 0 15px 17px;max-width:78ch;white-space:pre-line; }
+.review-shell .editorial-dashboard .editorial-dashboard__more { margin-top:12px;padding:6px 10px;border:1px solid var(--editorial-line);border-radius:3px;background:var(--editorial-paper);font-size:12px;color:var(--ip-blue,#185bac);box-shadow:none; }
+.review-shell .editorial-dashboard .review-editor-top__details { margin-top:15px;border-color:var(--editorial-line); }
+.review-shell .editorial-dashboard .review-editor-top__details>summary { font-size:12px;font-weight:500;color:var(--editorial-muted);padding:10px 0; }
+.review-shell .editorial-dashboard__full>.markdown-content { max-width:78ch;font-size:14px;line-height:1.9;color:var(--editorial-ink); }
+.review-shell .editorial-dashboard__full .markdown-content :is(h1,h2,h3,h4) { font-size:16px;line-height:1.7;font-weight:600;margin:22px 0 9px; }
+.review-shell .editorial-dashboard__full .markdown-content :is(p,li) { font-size:14px;line-height:1.9;font-weight:400; }
+@media(max-width:1000px) { .editorial-dashboard__overview.has-chart { grid-template-columns:minmax(0,1fr);gap:22px; }.editorial-chart { border-left:0;padding:19px 0 0;border-top:1px solid var(--editorial-line); }.editorial-dashboard__judgment>p { max-width:65ch; } }
+@media(max-width:480px) { .review-shell .editorial-dashboard .review-editor-top__heading { gap:9px; }.review-shell .editorial-dashboard .review-editor-top__heading .review-emblem { width:38px;height:43px; }.review-shell .editorial-dashboard .review-editor-top__copy { font-size:11px;padding:7px 9px; }.editorial-dashboard__overview { padding-top:16px; }.editorial-dashboard__judgment>p { font-size:13px; }.editorial-chart__row { grid-template-columns:5.6em minmax(0,1fr) 2.4em;gap:8px;font-size:11px; }.editorial-chart__scale { margin-left:calc(5.6em + 8px);margin-right:calc(2.4em + 8px); }.editorial-dashboard__points details>summary { font-size:13px; }.editorial-dashboard__points details>p { font-size:12px; } }

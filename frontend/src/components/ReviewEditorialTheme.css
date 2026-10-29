@@ -1,0 +1,58 @@
+/* The actual editorial verdict leads the page; team evidence remains below. */
+.review-shell .review-board__header{margin-bottom:21px;padding-bottom:18px}
+.review-shell .review-board__header h2{margin:0 0 7px;font-size:26px}
+.review-shell .review-board__header p{font-size:12px}
+.review-editor-pending{display:flex;align-items:center;gap:14px;padding:13px 16px;background:#e0e5ec;border:2px solid #252733;border-radius:8px;color:#505362;margin-bottom:23px;line-height:1.7}
+.review-editor-pending>strong{font-size:13px;white-space:nowrap;color:#252733}
+.review-editor-pending>span{font-size:12px}
+.review-shell .review-editor-top{border:3px solid #252733;border-radius:11px;box-shadow:4px 4px 0 #252733;background:#fff9e6;color:#252733;padding:23px 25px 18px;margin-bottom:27px;scroll-margin-top:18px}
+.review-editor-pending{scroll-margin-top:18px}
+.review-editor-top__heading{display:flex;align-items:center;gap:18px;margin-bottom:20px}
+.review-editor-top__heading>div{flex:1;min-width:0}
+.review-shell .review-editor-top__heading .review-emblem{width:65px;height:68px;border-radius:16px;margin-top:8px;transform:rotate(-3deg);box-shadow:2px 3px 0 #252733}
+.review-shell .review-editor-top__heading .review-portrait{width:104%;height:117%;margin:-15% -2% 0;filter:none}
+.review-editor-top__heading h3{font-size:18px;line-height:1.5;margin:0 0 6px;font-weight:850;color:#252733}
+.review-editor-top__heading p{font-size:11px;line-height:1.8;color:#505362;margin:0}
+.review-editor-top__copy{border:2px solid #252733;border-radius:7px;background:#fffdf5;color:#252733;box-shadow:2px 2px 0 #252733;padding:8px 12px;white-space:nowrap;font-size:12px;font-weight:700}
+.review-editor-top__copy:active{box-shadow:none;transform:translate(1px,1px)}
+.review-editor-top__lead{background:#fffdf5;border-left:4px solid #93443b;border-radius:2px 7px 7px 2px;padding:13px 16px;font-size:17px;line-height:1.9;color:#252733}
+.review-editor-top__lead .markdown-content{font-size:inherit;line-height:inherit;color:inherit}
+.review-editor-top__lead .markdown-content p{margin:0}
+.review-editor-top__lead .markdown-content h1,.review-editor-top__lead .markdown-content h2,.review-editor-top__lead .markdown-content h3{font-size:18px;margin:0 0 10px}
+.review-editor-top__support{font-size:14px;line-height:1.95;margin-top:14px;max-width:75ch;text-wrap:pretty}
+.review-editor-top__support .markdown-content{font-size:inherit;line-height:inherit}
+.review-editor-top__support .markdown-content p{margin:0}
+.review-editor-top__actions{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:19px 0 5px}
+.review-editor-top__actions>a{font-size:12px;color:#275a91;font-weight:750;text-decoration:none;border-bottom:1px solid #275a9166;padding:5px 0}
+.review-editor-top__actions>a:hover{border-color:#275a91}
+.review-editor-top__score{display:flex;align-items:baseline;gap:8px;font-size:11px;color:#505362}
+.review-editor-top__score>strong{font-size:21px;color:#252733;font-weight:850;font-variant-numeric:tabular-nums}
+.review-editor-top__details{border-top:1px solid #c9c4b2;margin-top:14px;padding-top:4px}
+.review-editor-top__details>summary{cursor:pointer;font-size:12px;color:#454957;padding:10px 0;font-weight:650;line-height:1.7}
+.review-editor-top__details>.markdown-content{font-size:14px;line-height:1.9;padding:6px 0 12px;max-width:78ch}
+.review-editor-top__details .review-score-summary{border-top:0;padding-top:4px;margin-top:2px}
+.review-editor-top__waiting{display:flex;align-items:center;gap:15px;font-size:13px;color:#505362;border-top:1px solid #cec8b4;padding-top:14px}
+.review-editor-top__waiting>span{font-size:19px;letter-spacing:4px;animation:editor-ink-pulse 1600ms ease-in-out infinite;color:#93443b}
+.review-editor-top__waiting p{margin:0}
+.review-editor-top.is-summarizing .review-emblem{animation:editor-settle 2200ms ease-in-out infinite}
+.review-teams-heading{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:29px 0 12px;scroll-margin-top:22px}
+.review-teams-heading>h3{font-size:18px;font-weight:850;line-height:1.5;margin:0;color:#252733}
+.review-teams-heading>p{font-size:11px;color:#505362;line-height:1.7;margin:0}
+.review-shell .review-board__toolbar{margin-top:16px}
+.review-shell .review-board__feed-heading>h3{font-size:14px}
+.review-shell .review-board__archive{margin-top:27px}
+/* Sidebar: titles, legible dates and actions only. */
+.review-shell .review-sidebar .sidebar-title{font-size:19px}
+.review-shell .review-sidebar .conversation-open{min-height:92px;padding:13px 12px}
+.review-shell .review-sidebar .conversation-title{font-size:13px;line-height:1.8;margin-bottom:10px}
+.review-shell .review-sidebar .conversation-meta{display:flex;align-items:center;gap:9px;min-height:22px;padding-right:27px}
+.review-shell .review-sidebar .conversation-meta .conversation-timestamp{font-size:11px;padding:0;line-height:1.7;display:block}
+.review-shell .review-sidebar .conversation-meta .conversation-current{position:static;font-size:10px;line-height:1.5;padding:1px 4px;white-space:nowrap}
+.review-shell .review-sidebar .sidebar-footer{padding:17px 0 20px;gap:0}
+.review-shell .review-sidebar .sidebar-settings{font-size:13px}
+@keyframes editor-ink-pulse{0%,100%{opacity:.45}50%{opacity:1}}
+@keyframes editor-settle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(0) translateY(-2px)}}
+@media(max-width:768px){.review-shell .review-editor-top{padding:19px 17px 15px}.review-editor-top__heading{gap:14px}.review-editor-top__lead{font-size:16px;padding:12px 13px}.review-editor-top__support{font-size:13px}.review-editor-pending{align-items:flex-start;flex-direction:column;gap:3px;padding:12px 14px}}
+@media(max-width:768px){.review-shell .review-editor-top,.review-editor-pending,.review-teams-heading{scroll-margin-top:68px}}
+@media(max-width:520px){.review-shell .review-board__header h2{font-size:23px}.review-shell .review-board__header p{font-size:11px;max-width:170px}.review-shell .review-editor-top{padding:16px 12px 13px}.review-editor-top__heading{gap:12px;flex-wrap:wrap;margin-bottom:16px}.review-shell .review-editor-top__heading .review-emblem{width:51px;height:56px}.review-editor-top__heading h3{font-size:16px}.review-editor-top__heading p{font-size:10px}.review-editor-top__copy{font-size:11px;padding:7px 9px;margin-left:auto}.review-editor-top__lead{font-size:15px;line-height:1.95}.review-editor-top__actions{gap:10px;margin-top:14px}.review-editor-top__score{font-size:10px}.review-editor-top__score>strong{font-size:20px}.review-editor-top__details>.markdown-content{font-size:13px}.review-editor-top__waiting{font-size:12px;align-items:flex-start}.review-teams-heading{gap:5px;margin-top:23px}.review-teams-heading>h3{font-size:17px}.review-teams-heading>p{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.review-shell .review-editor-top *{animation:none!important;transition:none!important}}

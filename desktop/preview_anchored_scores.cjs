@@ -1,0 +1,16 @@
+// Show actual synthetic grading outputs, never submit production manuscripts.
+const fs=require('node:fs'),path=require('node:path');
+const {createRequire}=require('node:module');
+const root=path.resolve(__dirname,'..'),req=createRequire(path.join(root,'frontend/package.json'));
+const out=path.join(root,'build/anchored-score-preview');fs.mkdirSync(out,{recursive:true});
+const data=JSON.parse(fs.readFileSync(path.join(root,'build/anchored-v10-check/final/validated-results.json'),'utf8'));
+const bundle=JSON.parse(fs.readFileSync(path.join(root,'desktop/role_bundle.json'),'utf8'));
+const records=data.records.filter(r=>r.case==='middle' && !r.repeat);
+const people=records.map(r=>({id:r.persona_id,...bundle.personas[r.persona_id]}));
+const sample={people,question:records[0].draft,responses:records.map(r=>({persona_id:r.persona_id,content:r.content,review_rating:r.review_rating})),verdict:{content:data.records.find(r=>r.case==='chair-middle').content}};
+fs.writeFileSync(path.join(out,'sample.json'),JSON.stringify(sample));
+fs.writeFileSync(path.join(out,'fixture.jsx'),`import React from 'react';import {createRoot} from 'react-dom/client';
+import ReviewBoard from '../../frontend/src/components/ReviewBoard.jsx';import data from './sample.json';
+import '../../frontend/src/App.css';import '../../frontend/src/components/ChatInterface.css';import '../../frontend/src/components/ReviewSoftTheme.css';import '../../frontend/src/components/ReviewComicTheme.css';import '../../frontend/src/components/ReviewCharacterTheme.css';import '../../frontend/src/components/ReviewContextTheme.css';import '../../frontend/src/components/ReviewEditorialTheme.css';import '../../frontend/src/components/ReviewLayoutTheme.css';import '../../frontend/src/components/ReviewDiscussionTheme.css';import '../../frontend/src/components/ReviewImportTheme.css';
+createRoot(document.getElementById('root')).render(<div className="app review-shell"><main className="chat-interface review-mode" style={{height:'100vh',overflow:'auto',display:'block',padding:24,boxSizing:'border-box',minWidth:0}}><header style={{marginBottom:20}}><h1 style={{fontSize:22}}>画像评分明细 · 虚构稿校准</h1><p>使用虚构稿的实际模型返回，仅检查评分协议与展示，不是用户稿件或人工评分基准。</p></header><div className="review-message"><ReviewBoard personas={data.people} question={data.question} rounds={[{round_number:1,complete:true,responses:data.responses}]} currentRound={1} maxRounds={1} roundPolicy="fixed" phase="complete" verdict={data.verdict}/></div></main></div>);`);
+req('esbuild').build({entryPoints:[path.join(out,'fixture.jsx')],bundle:true,outfile:path.join(out,'fixture.js'),jsx:'automatic',minify:true,nodePaths:[path.join(root,'frontend/node_modules')],define:{'process.env.NODE_ENV':'"production"','import.meta.env':'{}'}}).then(()=>{fs.writeFileSync(path.join(out,'index.html'),'<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>画像评分明细校准</title><link rel="stylesheet" href="fixture.css"><style>body{margin:0}#root,.app{min-width:0;max-width:100%}</style></head><body><div id="root"></div><script src="fixture.js"></script></body></html>');console.log(out);}).catch(e=>{console.error(e);process.exitCode=1;});

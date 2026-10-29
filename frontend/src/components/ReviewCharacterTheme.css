@@ -1,0 +1,93 @@
+/* Character stickers are the single expressive accent on the quiet paper desk. */
+.review-shell .review-emblem{position:relative;isolation:isolate;overflow:visible;padding:0;transform:rotate(-2deg);border-radius:40% 43% 35% 38%;background:var(--emblem-tint);box-shadow:2px 3px 0 #252733;border-width:2px}
+.review-shell .review-emblem--fun,.review-shell .review-emblem--value{transform:rotate(3deg)}
+.review-shell .review-emblem .review-portrait{position:relative;width:128%;max-width:none;height:128%;flex:none;margin:-15% -14% 0;filter:drop-shadow(0 1px 0 #fffdf5)}
+.review-shell .review-mode .advisor-setup__persona-gallery{column-gap:20px;row-gap:32px;padding-top:18px}
+.review-shell .review-mode .advisor-setup__persona-card{position:relative;overflow:visible;padding:23px 18px 18px;min-height:218px;align-items:flex-start}
+.review-shell .review-mode .advisor-setup__persona-card>.review-emblem{width:72px;height:66px;margin:-38px 0 14px 2px;box-shadow:3px 4px 0 #252733,5px 7px 12px #b8bcc255}
+.review-shell .review-mode .advisor-setup__persona-card>.review-emblem .review-portrait{width:137%;height:137%;margin:-24% -18% 0}
+.review-shell .review-mode .advisor-setup__persona-card:hover>.review-emblem{transform:rotate(-5deg) translateY(-3px)}
+.review-shell .review-mode .advisor-setup__persona-card .advisor-setup__persona-name{margin-top:0}
+.review-shell .review-team__top{position:relative;min-height:64px;align-items:flex-end;padding-bottom:4px}
+.review-shell .review-team .review-emblem{width:61px;height:57px;margin-top:-24px;padding:0;box-shadow:2px 3px 0 #252733}
+.review-shell .review-team__top>span:last-child{font-size:10px;padding-bottom:2px;white-space:nowrap}
+.review-shell .review-board__teams{padding-top:19px;row-gap:20px}
+.review-shell .review-team{overflow:visible;padding-top:12px}
+.review-shell .review-comment .review-emblem{width:45px;height:44px;padding:0;margin-top:6px;box-shadow:1px 2px 0 #252733}
+.review-shell .review-evidence__identity .review-emblem{width:60px;height:57px;margin:8px 0;padding:0}
+.review-shell .review-chair-label .review-emblem{width:58px;height:53px;margin-right:5px}
+.review-shell .review-editor__heading .review-emblem{width:59px;height:55px;padding:0}
+.review-shell .review-icon-choice .review-emblem{width:42px;height:40px;padding:0;margin-top:9px}
+.review-shell .review-mode .advisor-setup__model-row-persona .review-emblem{width:35px;height:33px;padding:0}
+.review-shell .review-mode .advisor-setup__edit-emoji-preview .review-emblem{width:63px;height:58px;padding:0}
+
+/* Compact history: keep titles and actual status, remove repeated labels. */
+.review-shell .review-sidebar{width:248px;padding:0 17px;transition:width 180ms ease,padding 180ms ease}
+.review-shell .review-sidebar .sidebar-header{padding:26px 0 23px;gap:11px}
+.review-shell .review-sidebar .sidebar-title{font-size:18px}
+.review-shell .review-sidebar .sidebar-subtitle{font-size:10px}
+.review-shell .review-sidebar .sidebar-actions{margin-bottom:18px}
+.review-shell .review-sidebar .sidebar-search{margin-bottom:19px}
+.review-shell .review-sidebar .sidebar-search input{padding-top:11px;padding-bottom:11px}
+.review-shell .review-sidebar .conversation-list{gap:12px;padding-top:5px}
+.review-shell .review-sidebar .conversation-open{min-height:102px;padding:13px 12px 30px;position:relative}
+.review-shell .review-sidebar .conversation-title{font-size:12px;height:auto;min-height:23px;line-height:1.8;margin-bottom:6px}
+.review-shell .review-sidebar .conversation-timestamp{font-size:9px;gap:5px;line-height:1.7}
+.review-shell .review-sidebar .conversation-run-summary{font-size:9px;margin-bottom:6px}
+.review-shell .review-sidebar .conversation-current{position:absolute;bottom:9px;left:12px;font-size:9px;line-height:1.4;padding:1px 4px}
+.review-shell .review-sidebar .sidebar-footer{gap:10px;padding:17px 0 13px}
+.review-shell .review-sidebar .sidebar-footer a{font-size:9px}
+.review-shell .review-sidebar .sidebar-collapse{display:flex;justify-content:center;align-items:center;align-self:flex-end;width:30px;height:28px;margin:14px -3px -13px 0;border:1.5px solid #252733;border-radius:6px;background:#fffdf5;box-shadow:1px 1px 0 #252733;z-index:1;color:#252733}
+.review-shell .review-sidebar .sidebar-history-rail{display:none}
+@media(min-width:769px){
+  .review-shell .review-sidebar.is-collapsed{width:76px;padding:0 12px}
+  .review-shell .review-sidebar.is-collapsed .sidebar-collapse{align-self:center;margin:14px 0 9px}
+  .review-shell .review-sidebar.is-collapsed .sidebar-header{padding:13px 0 22px;justify-content:center}
+  .review-shell .review-sidebar.is-collapsed .sidebar-header>div,
+  .review-shell .review-sidebar.is-collapsed .sidebar-new-review>span,
+  .review-shell .review-sidebar.is-collapsed .sidebar-search,
+  .review-shell .review-sidebar.is-collapsed .sidebar-list-heading,
+  .review-shell .review-sidebar.is-collapsed .conversation-list,
+  .review-shell .review-sidebar.is-collapsed .sidebar-settings>span,
+  .review-shell .review-sidebar.is-collapsed .sidebar-footer>a,
+  .review-shell .review-sidebar.is-collapsed .sidebar-version{display:none}
+  .review-shell .review-sidebar.is-collapsed .sidebar-new-review{width:46px;height:46px;padding:0;border-width:2px;box-shadow:2px 2px 0 #252733}
+  .review-shell .review-sidebar.is-collapsed .sidebar-actions{margin-bottom:18px}
+  .review-shell .review-sidebar.is-collapsed .sidebar-history-rail{display:flex;position:relative;align-items:center;justify-content:center;width:46px;height:44px;border:2px solid #252733;background:#fffdf5;border-radius:8px;box-shadow:2px 2px 0 #252733}
+  .review-shell .sidebar-history-rail>span{position:absolute;right:-5px;top:-8px;border:1.5px solid #252733;border-radius:4px;background:#ffe28a;font-size:9px;min-width:17px;text-align:center}
+  .review-shell .review-sidebar.is-collapsed .sidebar-footer{margin-top:auto}
+  .review-shell .review-sidebar.is-collapsed .sidebar-settings{padding:11px;justify-content:center;box-shadow:2px 2px 0 #252733}
+}
+
+/* Honest live feedback: returned work lights up; no simulated countdown. */
+.review-progress{border:2px solid #252733;border-radius:10px;padding:15px 17px;background:#e0e5ec;box-shadow:inset 3px 3px 7px #b8bcc2,inset -3px -3px 7px #fff;margin:0 0 23px}
+.review-progress__heading{display:flex;gap:10px;align-items:center;font-size:12px;color:#252733;flex-wrap:wrap}
+.review-progress__pulse{width:9px;height:9px;border-radius:50%;background:#275a91;animation:review-breathe 1800ms ease-in-out infinite;flex-shrink:0}
+.review-progress__hint{margin-left:auto;font-size:10px;color:#505362}
+.review-progress__track{display:flex;gap:7px;margin-top:13px}
+.review-progress__track>span{display:flex;gap:6px;align-items:center;justify-content:center;flex:1;padding:7px 3px;background:#f1f3f6;border:1.5px solid #a1a9b3;border-radius:5px;font-size:10px;color:#505362}
+.review-progress__track i{width:6px;height:6px;border-radius:50%;background:#a1a9b3}
+.review-progress__track .is-returned{color:#316951;border-color:#316951;background:#d9efdf;box-shadow:1px 1px 0 #316951}
+.review-progress__track .is-returned i{background:#316951}
+.review-progress__track .is-failed{border-color:#93443b;color:#93443b;background:#f8ddd3}
+.review-progress__caption{font-size:10px;color:#505362;margin:10px 0 0}
+.review-feedback:empty{display:none}
+.review-feedback{display:flex;gap:10px;align-items:center;padding:11px 14px;border:2px solid #252733;border-radius:8px;background:#fff3c7;box-shadow:2px 2px 0 #252733;margin-bottom:22px;font-size:12px;color:#252733;animation:review-feedback-in 260ms ease-out both}
+.review-feedback.is-complete{background:#d9efdf}
+.review-feedback__stamp{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border:2px solid #252733;border-radius:50%;flex-shrink:0;background:#fffdf5;color:#316951;transform:rotate(-12deg);font-weight:900}
+.review-shell .review-board.is-running .review-team.has-response .review-emblem{animation:review-stamp 360ms cubic-bezier(.2,.8,.3,1) both}
+.review-shell .review-board.is-running .review-team.is-reading .review-emblem{animation:review-reading 2600ms ease-in-out infinite}
+.review-shell .review-board.is-running .review-comment{animation:review-comment-in 240ms ease-out both}
+.review-shell .review-board.is-running .review-team.has-response{border-color:#316951}
+.review-shell .review-board.is-running .review-team.is-failed{border-color:#93443b}
+.review-shell .review-board .review-team__meter i{transition:width 450ms cubic-bezier(.2,.8,.3,1)}
+@keyframes review-breathe{0%,100%{box-shadow:0 0 0 0 #275a9125}50%{box-shadow:0 0 0 5px #275a9108}}
+@keyframes review-reading{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(1deg) translateY(-2px)}}
+@keyframes review-stamp{0%{transform:rotate(-8deg) scale(.9)}60%{transform:rotate(3deg) scale(1.08)}100%{transform:rotate(-2deg) scale(1)}}
+@keyframes review-comment-in{from{opacity:.2;transform:translateX(-7px)}to{opacity:1;transform:none}}
+@keyframes review-feedback-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+@media(max-width:1100px){.review-shell .review-team__top{flex-direction:column;align-items:flex-start;gap:9px}.review-shell .review-team .review-emblem{margin-top:-24px}}
+@media(max-width:900px){.review-shell .review-board__teams{padding-top:30px}.review-shell .review-team__top{flex-direction:row;align-items:flex-end;min-height:61px}.review-shell .review-team .review-emblem{width:59px;height:55px}}
+@media(max-width:768px){.review-shell .review-sidebar{width:85%;max-width:280px}.review-shell .review-sidebar .sidebar-collapse{display:none}.review-shell .review-sidebar .sidebar-header{padding-top:65px}.review-shell .review-mode .advisor-setup__persona-card>.review-emblem{width:68px;height:62px}.review-progress{padding:13px 11px}.review-progress__hint{display:none}.review-progress__track{gap:4px}.review-progress__track>span{font-size:9px;gap:3px}.review-feedback{font-size:11px}}
+@media(max-width:520px){.review-shell .review-comment .review-emblem{width:39px;height:38px;padding:0;margin-top:7px}.review-shell .review-evidence__identity .review-emblem{width:53px;height:49px}.review-shell .review-editor__heading .review-emblem{width:52px;height:49px}.review-shell .review-mode .advisor-setup__persona-gallery{row-gap:34px}.review-shell .review-mode .advisor-setup__persona-card{min-height:200px}.review-progress__heading{font-size:11px}.review-progress__track>span{flex-direction:column;font-size:9px}.review-progress__caption{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.review-shell .review-emblem,.review-shell .review-portrait,.review-shell .review-progress *, .review-shell .review-feedback,.review-shell .review-board.is-running .review-team .review-emblem,.review-shell .review-board.is-running .review-comment,.review-shell .review-sidebar{animation:none!important;transition:none!important}.review-shell .review-mode .advisor-setup__persona-card:hover>.review-emblem{transform:none}}
